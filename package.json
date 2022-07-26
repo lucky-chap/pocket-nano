@@ -14,8 +14,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "chalk": "^5.0.1",
     "commander": "^9.4.0",
-    "nanospinner": "^1.1.0"
+    "nanospinner": "^1.1.0",
+    "node-fetch": "^3.2.9",
+    "yargs": "^17.5.1"
   }
 }

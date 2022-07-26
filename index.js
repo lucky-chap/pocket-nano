@@ -1,27 +1,40 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
 
-import { Command } from 'commander';
+import fetch from 'node-fetch';
 
-const cli = new Command();
+import yargs from 'yargs';
 
-cli
-	.name('PocketEnv CLI')
-	.description(
-		'Official CLI for using PocketEnv (https://pocket-env.vercel.app)'
-	)
-	.version('0.0.1');
+import { hideBin } from 'yargs/helpers';
 
-cli
+const argv = yargs(hideBin(process.argv))
 	.command('get')
-	.description('Initialize the CLI to connect to the API')
-	.option(
-		'--name, -n <envName>',
-		'The API key on your profile page on PocketEnv'
-	)
-	.option('--key, -k <apiKey>', 'The API key on your profile page on PocketEnv')
-	.action((data, options) => {
-		console.log(data);
-		// console.log(options);
-	});
+	.demandCommand()
+	.usage('Usage: pocket-nano get --name=<env name> --key=<api key>')
+	.demandOption(['name', 'key'])
+	.alias('n', 'name')
+	.alias('k', 'key')
+	.describe('name', 'Name of the env file')
+	.describe('key', 'Your PocketEnv API key')
+	.help('h')
+	.alias('h', 'help')
+	.alias('v', 'version')
+	.epilog('Copyright 2022 PocketEnv').argv;
 
-cli.parse();
+if (!argv.name || !argv.key) {
+	console.log('All fields are required');
+} else {
+	const fetcherPost = async () => {
+		const body = {
+			name: argv.name,
+			key: argv.key,
+		};
+		await fetch('http://localhost:3000/api/cli', {
+			method: 'POST',
+			body: JSON.stringify(body),
+		})
+			.then((res) => res.json())
+			.then((data) => console.log(data));
+	};
+
+	fetcherPost();
+}
