@@ -1,0 +1,21 @@
+{
+  "name": "pocketenv-cli",
+  "version": "1.0.0",
+  "description": "Official CLI for using PocketEnv (https://pocket-env.vercel.app)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "pocket-nano": "./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "commander": "^9.4.0",
+    "nanospinner": "^1.1.0"
+  }
+}
