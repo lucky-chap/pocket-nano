@@ -1,40 +1,47 @@
 // #!/usr/bin/env node
 
-import fetch from 'node-fetch';
-
 import yargs from 'yargs';
+import chalk from 'chalk';
 
 import { hideBin } from 'yargs/helpers';
 
-const argv = yargs(hideBin(process.argv))
+import { getEnv } from './src/requests.js';
+import { download } from './src/utils.js';
+
+const cli = yargs(hideBin(process.argv))
 	.command('get')
 	.demandCommand()
-	.usage('Usage: pocket-nano get --name=<env name> --key=<api key>')
+	.usage('Usage: pocket-nano get --name=<envName> --key=<apiKey>')
+	.option('name', {
+		alias: 'n',
+		describe: 'Name of the env file',
+	})
+	.option('key', {
+		alias: 'k',
+		describe: 'Your PocketEnv API key',
+	})
+	.option('download', {
+		alias: 'd',
+		describe: 'Download the file',
+	})
+	.option('saveAs', {
+		alias: 's',
+		describe: 'Save file under custom name',
+	})
 	.demandOption(['name', 'key'])
-	.alias('n', 'name')
-	.alias('k', 'key')
-	.describe('name', 'Name of the env file')
-	.describe('key', 'Your PocketEnv API key')
 	.help('h')
 	.alias('h', 'help')
 	.alias('v', 'version')
 	.epilog('Copyright 2022 PocketEnv').argv;
 
-if (!argv.name || !argv.key) {
-	console.log('All fields are required');
+if (!cli.name || !cli.key) {
+	console.log(chalk.red('All fields are required'));
+} else if (cli.download && !cli.saveAs) {
+	getEnv(cli);
+	download(`${cli.name}.env`);
+} else if (cli.download && cli.saveAs) {
+	getEnv(cli);
+	download(cli.saveAs.toString());
 } else {
-	const fetcherPost = async () => {
-		const body = {
-			name: argv.name,
-			key: argv.key,
-		};
-		await fetch('http://localhost:3000/api/cli', {
-			method: 'POST',
-			body: JSON.stringify(body),
-		})
-			.then((res) => res.json())
-			.then((data) => console.log(data));
-	};
-
-	fetcherPost();
+	getEnv(cli);
 }

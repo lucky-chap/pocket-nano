@@ -1,5 +1,5 @@
 {
-  "name": "pocketenv-cli",
+  "name": "pocket-nano",
   "version": "1.0.0",
   "description": "Official CLI for using PocketEnv (https://pocket-env.vercel.app)",
   "main": "index.js",
@@ -10,15 +10,17 @@
   "bin": {
     "pocket-nano": "./index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "cli",
+    "pocket",
+    "nextjs"
+  ],
+  "author": "Quavo Huncho",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
     "chalk": "^5.0.1",
-    "commander": "^9.4.0",
-    "nanospinner": "^1.1.0",
     "node-fetch": "^3.2.9",
+    "ora": "^6.1.2",
     "yargs": "^17.5.1"
   }
 }
