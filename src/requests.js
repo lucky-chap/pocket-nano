@@ -12,7 +12,7 @@ export const getEnv = async (cli) => {
 		name: cli.name,
 		key: cli.key,
 	};
-	await fetch('http://localhost:3000/api/cli', {
+	await fetch('https://pocketenv.vercel.app/api/cli', {
 		method: 'POST',
 		body: JSON.stringify(body),
 	})
