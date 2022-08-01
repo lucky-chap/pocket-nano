@@ -6,7 +6,6 @@ import chalk from 'chalk';
 import { hideBin } from 'yargs/helpers';
 
 import { getEnv } from './src/requests.js';
-import { download } from './src/utils.js';
 
 const cli = yargs(hideBin(process.argv))
 	.command('get')
@@ -36,12 +35,6 @@ const cli = yargs(hideBin(process.argv))
 
 if (!cli.name || !cli.key) {
 	console.log(chalk.red('All fields are required'));
-} else if (cli.download && !cli.saveAs) {
-	getEnv(cli);
-	download(`${cli.name}.env`);
-} else if (cli.download && cli.saveAs) {
-	getEnv(cli);
-	download(cli.saveAs.toString());
 } else {
 	getEnv(cli);
 }
