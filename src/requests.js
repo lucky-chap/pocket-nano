@@ -43,8 +43,9 @@ export const getEnv = async (cli) => {
 				return data;
 			}
 		})
-		.catch((_) => {
+		.catch((e) => {
 			spinner.text = chalk.red.bold.italic('Internal Server error...');
+			spinner.text = chalk.red.bold.italic(e);
 			spinner.fail();
 		});
 };

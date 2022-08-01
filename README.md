@@ -1,10 +1,12 @@
 # How to Use
 
 ```bash
-pocket-nano --name=<your environment name> --key=<your api key>
+pocket-nano get --name=<your environment name> --key=<your api key>
 ```
 
 # Options
+
+#### get : Required command for using PocketNano
 
 #### --name : The name of your environment
 
@@ -19,4 +21,4 @@ pocket-nano --name=<your environment name> --key=<your api key>
 # Link
 
 - [GitHub](https://github.com/lucky-chap/pocket-nano)
-- [PocketEnv](https://github.com/lucky-chap/pocket-env)
+- [PocketEnv](https://github.com/lucky-chap/pocketenv)
