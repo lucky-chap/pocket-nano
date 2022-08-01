@@ -1,15 +1,27 @@
 {
   "name": "pocket-nano",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Official CLI for using PocketEnv (https://pocketenv.vercel.app)",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsup src/index.ts --format cjs,esm --clean",
+    "dev": "yarn build --watch",
+    "prepublish": "yarn build"
   },
-  "bin": {
-    "pocket-nano": "./index.js"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalit2005/hyperdocs.git"
   },
+  "bin": "dist/index.js",
   "keywords": [
     "cli",
     "pocket",
@@ -22,5 +34,8 @@
     "node-fetch": "^3.2.9",
     "ora": "^6.1.2",
     "yargs": "^17.5.1"
+  },
+  "devDependencies": {
+    "tsup": "^6.2.1"
   }
 }

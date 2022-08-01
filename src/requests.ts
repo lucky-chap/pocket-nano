@@ -20,7 +20,7 @@ export const getEnv = async (cli) => {
 			if (!res.ok) {
 				spinner.text = chalk.red.bold.italic('Request failed...\n');
 				spinner.fail();
-				res.json().then((err) => {
+				res.json().then((err: any) => {
 					console.log(chalk.red.bold.italic(err.message));
 				});
 			} else {
@@ -30,7 +30,7 @@ export const getEnv = async (cli) => {
 				return res.json();
 			}
 		})
-		.then((data) => {
+		.then((data: any) => {
 			if (data == undefined) {
 				return;
 			} else {

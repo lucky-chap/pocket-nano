@@ -1,11 +1,11 @@
-// #!/usr/bin/env node
+#!/usr/bin/env node
 
 import yargs from 'yargs';
 import chalk from 'chalk';
 
 import { hideBin } from 'yargs/helpers';
 
-import { getEnv } from './src/requests.js';
+import { getEnv } from './requests.js';
 
 const cli = yargs(hideBin(process.argv))
 	.command('get')
