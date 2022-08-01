@@ -1,6 +1,6 @@
 {
   "name": "pocket-nano",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official CLI for using PocketEnv (https://pocket-env.vercel.app)",
   "main": "index.js",
   "type": "module",
