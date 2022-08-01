@@ -1,24 +1,35 @@
+# PocketNano
+
+The official CLI for [PocketEnv](https://pocketenv.vercel.app/). PocketEnv was created for the PlanetScale and Hashnode [Hackathon].
+
 # How to Use
 
+### First install from NPM
+
 ```bash
-pocket-nano get --name=<your environment name> --key=<your api key>
+npm i -g pocket-nano
+```
+
+### Now access your environments
+
+```bash
+pocket-nano get --name=<your environment name> --key=<your api key> --saveAs=[custom name]
 ```
 
 # Options
 
-#### get : Required command for using PocketNano
+#### get : Command for using PocketNano (required)
 
-#### --name : The name of your environment
+#### --name : The name of your environment (required)
 
-#### --key : Your PocketEnv API key found on your user profile
+#### --key : Your PocketEnv API key found on your user profile (required)
 
-#### --download: Optional argument to download your environment
+#### --saveAs : Optional argument to save the environment under a new name (optional)
 
-#### --saveAs : Optional argument to save the environment under a new name
+#### --help : Bring up help (optional)
 
-#### --help : Bring up help
+# Links
 
-# Link
-
+- [API Key](https://pocketenv.vercel.app/profile)
 - [GitHub](https://github.com/lucky-chap/pocket-nano)
 - [PocketEnv](https://github.com/lucky-chap/pocketenv)

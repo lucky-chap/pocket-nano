@@ -24,7 +24,7 @@ export const getEnv = async (cli) => {
 					console.log(chalk.red.bold.italic(err.message));
 				});
 			} else {
-				spinner.text = chalk.green.bold.italic('Request completed...\n');
+				spinner.text = chalk.green.bold.italic('File downloaded...\n');
 				spinner.succeed();
 				spinner.clear();
 				return res.json();
@@ -34,10 +34,9 @@ export const getEnv = async (cli) => {
 			if (data == undefined) {
 				return;
 			} else {
-				// console.log(data);
-				if (cli.download && !cli.saveAs) {
+				if (!cli.saveAs) {
 					download(`${cli.name}.env`, data.fields);
-				} else if (cli.download && cli.saveAs) {
+				} else if (cli.saveAs) {
 					download(cli.saveAs.toString(), data.fields);
 				}
 				return data;
