@@ -38,3 +38,5 @@ if (!cli.name || !cli.key) {
 } else {
 	getEnv(cli);
 }
+
+export default cli;
